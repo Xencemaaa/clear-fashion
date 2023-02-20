@@ -35,8 +35,8 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // I can find on these e-shops
 // 2. Log the variable
 
-var tshirt_moins_cher=('https://www.faguo-store.com/fr/vetements/7606-arcy-t-shirt-en-coton-recycle-kaki.html#product-avis')
-console.log(tshirt_moins_cher)
+const tshirt_moins_cher=('https://www.faguo-store.com/fr/vetements/7606-arcy-t-shirt-en-coton-recycle-kaki.html#product-avis')
+console.log('The cheapest tee-shirt is: ' + tshirt_moins_cher)
 
 /**
  * 👕
@@ -50,6 +50,11 @@ console.log(tshirt_moins_cher)
 // 🎯 TODO 2: Number of products
 // 1. Create a variable and assign it the number of products
 // 2. Log the variable
+
+const marketplace = require('./data') 
+const nb_produits = marketplace.length
+console.log('There are ' + nb_produits + ' products') 
+
 
 // 🎯 TODO 3: Brands name
 // 1. Create a variable and assign it the list of brands name only
