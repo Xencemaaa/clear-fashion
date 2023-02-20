@@ -36,7 +36,7 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // 2. Log the variable
 
 const tshirt_moins_cher=('https://www.faguo-store.com/fr/vetements/7606-arcy-t-shirt-en-coton-recycle-kaki.html#product-avis')
-console.log('The cheapest tee-shirt is: ' + tshirt_moins_cher)
+//console.log('The cheapest tee-shirt is: ' + tshirt_moins_cher)
 
 /**
  * 👕
@@ -53,7 +53,7 @@ console.log('The cheapest tee-shirt is: ' + tshirt_moins_cher)
 
 const marketplace = require('./data') 
 const nb_produits = marketplace.length
-console.log('There are ' + nb_produits + ' products') 
+//console.log('There are ' + nb_produits + ' products') 
 
 
 // 🎯 TODO 3: Brands name
@@ -61,8 +61,8 @@ console.log('There are ' + nb_produits + ' products')
 // 2. Log the variable
 // 3. Log how many brands we have
 let brands = [...new Set(marketplace.map( item => item.brand))]
-console.log(brands)
-console.log(brands.length)
+//console.log(brands)
+//console.log(brands.length)
 
 
 // 🎯 TODO 4: Sort by price
@@ -74,7 +74,7 @@ const products=[];
 for (let i=0; i < marketplace.length;i++) {
   products.push(sorted[i].name);
 }
-console.log(products);
+//console.log(products);
 
 
 // 🎯 TODO 5: Sort by date
@@ -88,15 +88,32 @@ function sortByDateitems(items) {
   });
 }
 const arrSorted=sortByDateitems(marketplace)
-console.log(arrSorted)
+//console.log(arrSorted)
 
 // 🎯 TODO 6: Filter a specific price range
 // 1. Filter the list of products between 50€ and 100€
 // 2. Log the list
 
+const filtre = marketplace.filter(function(a) {
+  return a.price > 50 && a.price < 100; 
+});
+console.log(filtre)
+
+/*
+let x = filtre.map((item) => {
+  return {
+    price: item.price
+  }
+})
+console.log(filtre, x)
+*/
+
 // 🎯 TODO 7: Average price
 // 1. Determine the average price of the marketplace
 // 2. Log the average
+
+const avg = marketplace.reduce((a,b)=>a+b.price,0)/nb_produits
+console.log(avg)
 
 /**
  * 🏎
