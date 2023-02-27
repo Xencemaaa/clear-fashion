@@ -74,6 +74,8 @@ const products=[];
 for (let i=0; i < marketplace.length;i++) {
   products.push(sorted[i].name);
 }
+
+
 //console.log(products);
 
 
@@ -134,13 +136,52 @@ console.log(avg)
 //   ....
 //   'brand-name-n': [{...}, {...}, ..., {...}],
 // };
-//
+
+function groupBy(list, keyGetter) {
+  const map = new Map();
+  list.forEach((item) => {
+       const key = keyGetter(item);
+       const collection = map.get(key);
+       if (!collection) {
+           map.set(key, [item]);
+       } else {
+           collection.push(item);
+       }
+  });
+  return map;
+}
+const brandas = groupBy(marketplace, item => item.brand);
+
 // 2. Log the variable
+console.log(brandas);
+
 // 3. Log the number of products by brands
+brandas.forEach(function(item) {
+  console.log(item.length);
+})
+
 
 // 🎯 TODO 9: Sort by price for each brand
 // 1. For each brand, sort the products by price, from highest to lowest
 // 2. Log the sort
+
+function sortByPrice(items) {
+  items.sort((a,b)=> a.price - b.price);
+  return items
+}
+
+
+const brandsbyprice = new Array();
+brandas.forEach(function(item, index) {
+  brandsbyprice[index] = sortByPrice(item);
+})
+
+brandsbyprice['loom']=brandsbyprice['loom'].reverse();
+brandsbyprice['panafrica']=brandsbyprice['panafrica'].reverse();
+brandsbyprice['hast']=brandsbyprice['hast'].reverse();
+console.log(brandsbyprice['loom']);
+console.log(brandsbyprice['panafrica']);
+console.log(brandsbyprice['hast']);
 
 // 🎯 TODO 10: Sort by date for each brand
 // 1. For each brand, sort the products by date, from old to recent
