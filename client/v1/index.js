@@ -36,7 +36,7 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // 2. Log the variable
 
 const tshirt_moins_cher=('https://www.faguo-store.com/fr/vetements/7606-arcy-t-shirt-en-coton-recycle-kaki.html#product-avis')
-//console.log('The cheapest tee-shirt is: ' + tshirt_moins_cher)
+console.log('The cheapest tee-shirt is: ' + tshirt_moins_cher)
 
 /**
  * 👕
@@ -53,7 +53,7 @@ const tshirt_moins_cher=('https://www.faguo-store.com/fr/vetements/7606-arcy-t-s
 
 const marketplace = require('./data') 
 const nb_produits = marketplace.length
-//console.log('There are ' + nb_produits + ' products') 
+console.log('There are ' + nb_produits + ' products') 
 
 
 // 🎯 TODO 3: Brands name
@@ -61,8 +61,8 @@ const nb_produits = marketplace.length
 // 2. Log the variable
 // 3. Log how many brands we have
 let brands = [...new Set(marketplace.map( item => item.brand))]
-//console.log(brands)
-//console.log(brands.length)
+console.log(brands)
+console.log(brands.length)
 
 
 // 🎯 TODO 4: Sort by price
@@ -90,7 +90,7 @@ function sortByDateitems(items) {
   });
 }
 const arrSorted=sortByDateitems(marketplace)
-//console.log(arrSorted)
+console.log(arrSorted)
 
 // 🎯 TODO 6: Filter a specific price range
 // 1. Filter the list of products between 50€ and 100€
@@ -101,14 +101,14 @@ const filtre = marketplace.filter(function(a) {
 });
 console.log(filtre)
 
-/*
+
 let x = filtre.map((item) => {
   return {
     price: item.price
   }
 })
 console.log(filtre, x)
-*/
+
 
 // 🎯 TODO 7: Average price
 // 1. Determine the average price of the marketplace
@@ -187,6 +187,23 @@ console.log(brandsbyprice['hast']);
 // 1. For each brand, sort the products by date, from old to recent
 // 2. Log the sort
 
+function sortByDateitems(items) {
+  return items.sort(function(a, b) {
+    return new Date(b.released) - new Date(a.released);
+  });
+}
+const brandsbydate = new Array();
+brandas.forEach(function(item, index) {
+  brandsbydate[index] = sortByDateitems(item);
+})
+
+brandsbydate['loom']=brandsbydate['loom'].reverse();
+brandsbydate['panafrica']=brandsbydate['panafrica'].reverse();
+brandsbydate['hast']=brandsbydate['hast'].reverse();
+console.log(brandsbydate['loom']);
+console.log(brandsbydate['panafrica']);
+console.log(brandsbydate['hast']);
+
 /**
  * 💶
  * Let's talk about money now
@@ -197,6 +214,10 @@ console.log(brandsbyprice['hast']);
 // 🎯 TODO 11: Compute the p90 price value
 // 1. Compute the p90 price value of each brand
 // The p90 value (90th percentile) is the lower value expected to be exceeded in 90% of the products
+
+console.log("loom p90 :",brandsbyprice['loom'][ Math.round(brandsbyprice['loom'].length * 0.9)].price);
+console.log("panafrica p90 :",brandsbyprice['panafrica'][ Math.round(brandsbyprice['panafrica'].length * 0.9)].price);
+console.log("hast p90 :",brandsbyprice['hast'][ Math.round(brandsbyprice['hast'].length * 0.9)].price);
 
 /**
  * 🧥
