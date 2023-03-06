@@ -411,13 +411,38 @@ const COTELE_PARIS = [
 // // 1. Log if we have new products only (true or false)
 // // A new product is a product `released` less than 2 weeks.
 
+var newProduct = false;
+
+
+
+for(let i=0; i < COTELE_PARIS.length;i++) {
+  if (new Date(COTELE_PARIS[i].released) > Date.now() - 12096e5) {
+    newProduct = true;
+    break;
+  }
+}
+
+console.log(newProduct)
+
 // 🎯 TODO 2: Reasonable price
 // // 1. Log if coteleparis is a reasonable price shop (true or false)
 // // A reasonable price if all the products are less than 100€
 
+let reasonable = false;
+for(let i=0; i < COTELE_PARIS.length;i++) {
+  if(COTELE_PARIS[i].price > 100)
+  reasonable = true;
+  break;
+}
+
+console.log(reasonable)
+
 // 🎯 TODO 3: Find a specific product
 // 1. Find the product with the uuid `2b9a47e3-ed73-52f6-8b91-379e9c8e526c`
 // 2. Log the product
+
+let produit_exact = COTELE_PARIS.filter(item=> item.uuid =="2b9a47e3-ed73-52f6-8b91-379e9c8e526c");
+console.log(produit_exact[0])
 
 // 🎯 TODO 4: Delete a specific product
 // 1. Delete the product with the uuid `2b9a47e3-ed73-52f6-8b91-379e9c8e526c`
